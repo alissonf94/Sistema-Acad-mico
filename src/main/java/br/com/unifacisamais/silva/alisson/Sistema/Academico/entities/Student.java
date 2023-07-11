@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 @Entity
-@PrimaryKeyJoinColumn(name = "email")
+@PrimaryKeyJoinColumn(name = "id")
 @DiscriminatorValue("student")
 public class Student extends User {
 	

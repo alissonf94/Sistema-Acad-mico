@@ -10,7 +10,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 @Entity
 @DiscriminatorValue("teacher")
-@PrimaryKeyJoinColumn(name = "email")
+@PrimaryKeyJoinColumn(name = "id")
 public class Teacher extends User{
 	private static final long serialVersionUID = 1L;
 	
