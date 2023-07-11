@@ -12,13 +12,15 @@ public class Punctuation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	private int value;
 	
 	@OneToOne
 	private SchoolDiscipline disciplina;
+	
 	@ManyToOne
-	private SchoolReport schoolReport;
-
+	private SchoolCard schoolCard;
+	
 	public Punctuation() {}
 	
 	public Punctuation(int value, SchoolDiscipline disciplina) {
@@ -42,12 +44,13 @@ public class Punctuation {
 		this.disciplina = disciplina;
 	}
 
-	public SchoolReport getSchoolReport() {
-		return schoolReport;
+	public SchoolCard getSchoolCard() {
+		return schoolCard;
 	}
 
-	public void setSchoolReport(SchoolReport schoolReport) {
-		this.schoolReport = schoolReport;
+	public void setSchoolCard(SchoolCard schoolCard) {
+		this.schoolCard = schoolCard;
 	}
-	 
+
+		
 }

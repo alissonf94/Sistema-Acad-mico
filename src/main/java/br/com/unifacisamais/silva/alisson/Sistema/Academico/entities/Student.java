@@ -4,7 +4,6 @@ import java.util.Date;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 @Entity
@@ -13,8 +12,8 @@ import jakarta.persistence.PrimaryKeyJoinColumn;
 public class Student extends User {
 	
 	private static final long serialVersionUID = 1L;
-	@OneToOne(mappedBy = "student", fetch = FetchType.LAZY)
-	private SchoolReport schoolReport;
+	@OneToOne(mappedBy = "student")
+	private SchoolCard schoolCard;
 	
 	public Student () {}
 	
@@ -22,12 +21,13 @@ public class Student extends User {
 		super(name, email, birthDate, password);
 	}
 
-	public SchoolReport getSchoolReport() {
-		return schoolReport;
+	public SchoolCard getSchoolCard() {
+		return schoolCard;
 	}
 
-	public void setSchoolReport(SchoolReport schoolReport) {
-		this.schoolReport = schoolReport;
+	public void setSchoolCard(SchoolCard schoolCard) {
+		this.schoolCard = schoolCard;
 	}
+	
 	
 }
