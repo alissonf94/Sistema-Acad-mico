@@ -18,7 +18,7 @@ public class SchoolCard {
 	@OneToOne
 	private Student student;
 	
-	@OneToMany(mappedBy = "schoolCard")
+	@OneToMany
 	private Set<Punctuation> scores;
 
 	public SchoolCard(Long id, Student student) {

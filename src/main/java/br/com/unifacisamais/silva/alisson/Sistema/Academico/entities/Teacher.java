@@ -5,16 +5,20 @@ import java.util.Set;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
+
 @Entity
 @DiscriminatorValue("teacher")
 @PrimaryKeyJoinColumn(name = "id")
 public class Teacher extends User{
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
+	@OneToMany
+	@JoinTable(name = "teacher_has_disciplines", joinColumns = {@JoinColumn(name="teacher_id")}
+	,inverseJoinColumns = {@JoinColumn(name="discipline_id")})
 	private Set<SchoolDiscipline> schooDisciplines;
 	
 	public Teacher () {}

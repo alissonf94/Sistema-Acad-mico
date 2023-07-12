@@ -1,33 +1,22 @@
 package br.com.unifacisamais.silva.alisson.Sistema.Academico.entities;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 
 @Entity
 public class Punctuation {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
 	private int value;
-	
-	@OneToOne
-	private SchoolDiscipline disciplina;
-	
-	@ManyToOne
-	private SchoolCard schoolCard;
+	@EmbeddedId
+	private PunctuationPK id =  new PunctuationPK();
 	
 	public Punctuation() {}
-	
-	public Punctuation(int value, SchoolDiscipline disciplina) {
+
+	public Punctuation(int value, SchoolDiscipline discipline, SchoolCard schoolCard) {
 		this.value = value;
-		this.disciplina = disciplina;
+		id.setDisciplina(discipline);
+		id.setSchoolCard(schoolCard);
 	}
-	
+
 	public int getValue() {
 		return value;
 	}
@@ -36,21 +25,4 @@ public class Punctuation {
 		this.value = value;
 	}
 	
-	public SchoolDiscipline getDisciplina() {
-		return disciplina;
-	}
-	
-	public void setDisciplina(SchoolDiscipline disciplina) {
-		this.disciplina = disciplina;
-	}
-
-	public SchoolCard getSchoolCard() {
-		return schoolCard;
-	}
-
-	public void setSchoolCard(SchoolCard schoolCard) {
-		this.schoolCard = schoolCard;
-	}
-
-		
 }
