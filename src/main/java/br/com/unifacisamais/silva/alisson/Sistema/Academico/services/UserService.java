@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.UserMinDTO;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.User;
@@ -14,6 +15,7 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
+	@Transactional(readOnly = true)
 	public void insert (User user) {
 		try {
 			userRepository.save(user);
@@ -23,6 +25,7 @@ public class UserService {
 		}
 	}
 	
+	@Transactional(readOnly = true)
 	public List<UserMinDTO> findAll() {
 		List <User> users = userRepository.findAll();
 		

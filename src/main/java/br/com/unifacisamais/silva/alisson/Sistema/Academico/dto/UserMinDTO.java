@@ -8,7 +8,6 @@ public class UserMinDTO {
 	private String email;
 	
 	public UserMinDTO(User user) {
-		super();
 		this.id =  user.getId();
 		this.name = user.getName();
 		this.email = user.getEmail();
