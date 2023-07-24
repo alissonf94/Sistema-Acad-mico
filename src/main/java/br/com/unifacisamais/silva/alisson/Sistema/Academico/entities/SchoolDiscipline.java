@@ -20,14 +20,14 @@ public class SchoolDiscipline {
 	private String name;
 	
 	@OneToOne
-	private User teacher;
+	private Teacher teacher;
 	
 	@ManyToMany
-	private Set<User> students;
+	private Set<Student> students;
 	
 	public SchoolDiscipline () {}
 	
-	public SchoolDiscipline(String name, User teacher) {
+	public SchoolDiscipline(String name, Teacher teacher) {
 		this.name = name;
 		this.teacher = teacher;
 	}
@@ -44,11 +44,11 @@ public class SchoolDiscipline {
 		return teacher;
 	}
 
-	public void setTeacher(User teacher) {
+	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
 
-	public Set<User> getStudents() {
+	public Set<Student> getStudents() {
 		return students;
 	}
 

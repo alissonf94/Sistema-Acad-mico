@@ -16,12 +16,12 @@ public class SchoolCard {
 	private Long id;
 	
 	@OneToOne
-	private User student;
+	private Student student;
 	
 	@OneToMany
 	private Set<Punctuation> scores;
 
-	public SchoolCard(Long id ,User student) {
+	public SchoolCard(Long id ,Student student) {
 		super();
 		this.id = id;
 		this.student = student;
@@ -33,7 +33,7 @@ public class SchoolCard {
 		return student;
 	}
 
-	public void setStudent(User student) {
+	public void setStudent(Student student) {
 		this.student = student;
 	}
 
