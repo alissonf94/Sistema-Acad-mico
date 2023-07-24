@@ -28,7 +28,6 @@ public class UserService {
 	@Transactional(readOnly = true)
 	public List<UserMinDTO> findAll() {
 		List <User> users = userRepository.findAll();
-		
 		List <UserMinDTO> dto = users.stream().map(p -> new UserMinDTO (p)).toList();
 		return dto;
 	}
