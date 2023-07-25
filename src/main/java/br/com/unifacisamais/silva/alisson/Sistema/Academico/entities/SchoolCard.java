@@ -1,5 +1,7 @@
 package br.com.unifacisamais.silva.alisson.Sistema.Academico.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -19,11 +21,10 @@ public class SchoolCard {
 	private Student student;
 	
 	@OneToMany
-	private Set<Punctuation> scores;
+	private List<Punctuation> scores =  new ArrayList<>();
 
-	public SchoolCard(Long id ,Student student) {
+	public SchoolCard(Student student) {
 		super();
-		this.id = id;
 		this.student = student;
 	}
 	
@@ -41,7 +42,7 @@ public class SchoolCard {
 		return id;
 	}
 
-	public Set<Punctuation> getScores() {
+	public List<Punctuation> getScores() {
 		return scores;
 	}
 	

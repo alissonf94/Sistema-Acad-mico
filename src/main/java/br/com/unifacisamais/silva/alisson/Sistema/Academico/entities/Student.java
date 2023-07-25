@@ -3,13 +3,12 @@ package br.com.unifacisamais.silva.alisson.Sistema.Academico.entities;
 import java.util.Date;
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.enuns.UserRole;
-import jakarta.persistence.DiscriminatorValue;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 @Entity
-@PrimaryKeyJoinColumn(name = "id")
-@DiscriminatorValue("student")
+@PrimaryKeyJoinColumn(name = "id_student")
 public class Student extends User {
 	
 	private static final long serialVersionUID = 1L;

@@ -22,7 +22,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name ="type_user")
 public abstract class User implements Serializable, UserDetails {
 	private static final long serialVersionUID = 1L;
 	@Id

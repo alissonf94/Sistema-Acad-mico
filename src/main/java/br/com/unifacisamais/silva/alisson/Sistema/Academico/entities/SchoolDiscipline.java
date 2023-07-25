@@ -27,7 +27,7 @@ public class SchoolDiscipline {
 	
 	public SchoolDiscipline () {}
 	
-	public SchoolDiscipline(String name, Teacher teacher) {
+	public SchoolDiscipline(String name,Teacher teacher) {
 		this.name = name;
 		this.teacher = teacher;
 	}
@@ -44,9 +44,6 @@ public class SchoolDiscipline {
 		return teacher;
 	}
 
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
-	}
 
 	public Set<Student> getStudents() {
 		return students;
