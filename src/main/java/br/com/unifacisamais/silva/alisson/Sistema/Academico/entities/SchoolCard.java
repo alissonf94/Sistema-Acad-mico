@@ -2,7 +2,6 @@ package br.com.unifacisamais.silva.alisson.Sistema.Academico.entities;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

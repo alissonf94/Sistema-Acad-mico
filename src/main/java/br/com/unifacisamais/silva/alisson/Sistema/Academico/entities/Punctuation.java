@@ -5,14 +5,14 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Punctuation {
-	private int value;
+	private Integer value;
 	@EmbeddedId
 	private PunctuationPK id =  new PunctuationPK();
 	
 	public Punctuation() {}
 
-	public Punctuation(int value, SchoolDiscipline discipline, SchoolCard schoolCard) {
-		this.value = value;
+	public Punctuation(SchoolDiscipline discipline, SchoolCard schoolCard) {
+		this.value = null;
 		id.setDisciplina(discipline);
 		id.setSchoolCard(schoolCard);
 	}

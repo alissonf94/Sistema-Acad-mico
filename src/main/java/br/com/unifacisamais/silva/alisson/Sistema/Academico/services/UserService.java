@@ -7,18 +7,28 @@ import org.springframework.stereotype.Service;
 
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.UserMinDTO;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.SchoolCard;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Student;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.User;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.enuns.UserRole;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.UserRepository;
 
 @Service
 public class UserService {
 	@Autowired
 	UserRepository userRepository;
-	
+	@Autowired
+	SchoolCardService cardService;
 	
 	public void insert (User user) {
 		try {
 			userRepository.save(user);
+			
+			if(user.getRole() == UserRole.STUDENT) {
+				Student student = (Student) user;
+				student.setSchoolCard(new SchoolCard(student)); 
+				cardService.insert(student.getSchoolCard());
+			}
 		}
 		catch (Exception exception) {
 			System.err.print(exception.getMessage());

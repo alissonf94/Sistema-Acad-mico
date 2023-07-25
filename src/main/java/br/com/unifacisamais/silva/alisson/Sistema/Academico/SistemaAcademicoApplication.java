@@ -1,13 +1,15 @@
 package br.com.unifacisamais.silva.alisson.Sistema.Academico;
 
 
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Student;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.enuns.UserRole;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.SchoolDisciplineRepository;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.TeacherRepository;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.UserRepository;
@@ -41,7 +43,9 @@ public class SistemaAcademicoApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		service.AddDiscipline("matematica","Paulofertnanersxx55@gmail");
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		Student student = new Student("Alisson","alisson@",format.parse("19/09/2001"),"alissom",UserRole.STUDENT);
+		userService.insert(student);
 	}
 
 }
