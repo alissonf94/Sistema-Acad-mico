@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.SchoolDisciplineDTO;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Punctuation;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.SchoolDiscipline;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Student;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.SchoolDisciplineRepository;
 @Service
 public class SchoolDisciplineService {
@@ -14,7 +16,8 @@ public class SchoolDisciplineService {
 	SchoolDisciplineRepository schoolDisciplineRepository;
 	@Autowired
 	SchoolCardService cardService;
-	
+	@Autowired
+	PunctuationService punctuationService;
 	@Autowired
 	UserService service;	
 	public void insert (SchoolDiscipline discipline) {
@@ -37,5 +40,15 @@ public class SchoolDisciplineService {
 				 filter(p -> p.getName()==nameDiscipline).findFirst().orElse(null);
 		return discipline;
 	}
-
+	
+	public void addStudent (String email,String nameDiscipline) {
+		Student student = (Student) service.findBYEmail(email);
+		SchoolDiscipline discipline= findByName(nameDiscipline);
+		discipline.getStudents().add(student);
+		
+		Punctuation punctuation = new Punctuation(discipline,student.getSchoolCard());
+		student.getSchoolCard().getScores().add(punctuation);
+		
+		punctuationService.insert(punctuation);
+	}
 }
