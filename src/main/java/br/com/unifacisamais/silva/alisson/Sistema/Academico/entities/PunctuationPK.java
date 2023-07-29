@@ -1,5 +1,6 @@
 package br.com.unifacisamais.silva.alisson.Sistema.Academico.entities;
 
+
 import jakarta.persistence.Embeddable;
 
 import jakarta.persistence.JoinColumn;

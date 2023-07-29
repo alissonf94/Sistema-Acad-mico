@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.UserMinDTO;
-import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.SchoolCard;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Student;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.User;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.enuns.UserRole;
@@ -24,11 +23,11 @@ public class UserService {
 		try {
 			userRepository.save(user);
 			
-			if(user.getRole() == UserRole.STUDENT) {
+			/*if(user.getRole() == UserRole.STUDENT) {
 				Student student = (Student) user;
-				student.setSchoolCard(new SchoolCard(student)); 
-				cardService.insert(student.getSchoolCard());
-			}
+				student.getSchoolCard().setStudent(student);
+				
+			}*/
 		}
 		catch (Exception exception) {
 			System.err.print(exception.getMessage());

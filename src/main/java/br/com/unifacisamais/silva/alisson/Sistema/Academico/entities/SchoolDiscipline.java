@@ -1,15 +1,15 @@
 package br.com.unifacisamais.silva.alisson.Sistema.Academico.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 
-
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class SchoolDiscipline {
@@ -19,11 +19,11 @@ public class SchoolDiscipline {
 	
 	private String name;
 	
-	@OneToOne
+	@ManyToOne 
 	private Teacher teacher;
 	
-	@ManyToMany
-	private Set<Student> students;
+	@ManyToMany(fetch = FetchType.EAGER)
+	private Set<Student> students = new HashSet<>();
 	
 	public SchoolDiscipline () {}
 	

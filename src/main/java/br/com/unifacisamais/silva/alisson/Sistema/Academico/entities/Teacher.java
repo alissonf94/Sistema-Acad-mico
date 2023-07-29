@@ -17,15 +17,13 @@ import jakarta.persistence.PrimaryKeyJoinColumn;
 public class Teacher extends User{
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "teacher_has_disciplines", joinColumns = {@JoinColumn(name="teacher_id")}
-	,inverseJoinColumns = {@JoinColumn(name="discipline_id")})
+	@OneToMany(mappedBy = "teacher")
 	private Set<SchoolDiscipline>schooDisciplines = new HashSet<>();
 	
 	public Teacher () {}
 	
-	public Teacher(String name, String email, Date birthDate, String password, UserRole role) {
-		super(name, email, birthDate, password, role);
+	public Teacher(String name, String email, Date birthDate, String password) {
+		super(name, email, birthDate, password, UserRole.TEACHER);
 	}
 	
 	public Set<SchoolDiscipline> getSchooDisciplines() {

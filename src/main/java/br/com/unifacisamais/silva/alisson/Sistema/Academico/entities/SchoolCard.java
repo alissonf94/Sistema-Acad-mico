@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,15 +20,14 @@ public class SchoolCard {
 	@OneToOne
 	private Student student;
 	
-	@OneToMany
+	@OneToMany( fetch = FetchType.EAGER)
 	private List<Punctuation> scores =  new ArrayList<>();
-
-	public SchoolCard(Student student) {
-		super();
-		this.student = student;
-	}
 	
 	public SchoolCard (){}
+		
+	public SchoolCard(Student student) {
+		this.student = student;
+	}
 
 	public User getStudent() {
 		return student;

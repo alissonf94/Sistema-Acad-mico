@@ -12,7 +12,7 @@ public class Punctuation {
 	public Punctuation() {}
 
 	public Punctuation(SchoolDiscipline discipline, SchoolCard schoolCard) {
-		this.value = null;
+		this.value = 0;
 		id.setDisciplina(discipline);
 		id.setSchoolCard(schoolCard);
 	}
@@ -25,4 +25,11 @@ public class Punctuation {
 		this.value = value;
 	}
 	
+	public PunctuationPK getId () {
+		return id;
+	}
+	
 }
+	
+	
+
