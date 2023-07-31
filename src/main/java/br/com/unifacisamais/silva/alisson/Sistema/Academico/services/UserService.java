@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.UserDTO;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.UserMinDTO;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Student;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Teacher;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.User;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.enuns.UserRole;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.UserRepository;
@@ -19,15 +20,16 @@ public class UserService {
 	@Autowired
 	SchoolCardService cardService;
 	
-	public void insert (User user) {
+	public void insert (UserDTO user) {
 		try {
-			userRepository.save(user);
-			
-			/*if(user.getRole() == UserRole.STUDENT) {
-				Student student = (Student) user;
-				student.getSchoolCard().setStudent(student);
-				
-			}*/
+			if(user.getRole()== UserRole.STUDENT) {
+				Student student = new Student(user.getName(), user.getEmail(), user.getBirthDate(),user.getPassword());
+				userRepository.save(student);
+			}
+			else{
+				Teacher teacher = new Teacher (user.getName(),user.getEmail(), user.getBirthDate(),user.getPassword());
+				userRepository.save(teacher);
+			}
 		}
 		catch (Exception exception) {
 			System.err.print(exception.getMessage());

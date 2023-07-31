@@ -9,8 +9,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.enuns.UserRole;
-import jakarta.persistence.DiscriminatorColumn;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,6 +33,7 @@ public abstract class User implements Serializable, UserDetails {
 	private String email;
 	private Date birthDate;
 	private String password;
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private UserRole role;
 	
 	public User () {}
@@ -117,5 +120,11 @@ public abstract class User implements Serializable, UserDetails {
 		// TODO Auto-generated method stub
 		if (this.role == UserRole.TEACHER) return List.of(new SimpleGrantedAuthority("ROLE_TEACHER"));
 		else return List.of(new SimpleGrantedAuthority("ROLE_STUDENT"));
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

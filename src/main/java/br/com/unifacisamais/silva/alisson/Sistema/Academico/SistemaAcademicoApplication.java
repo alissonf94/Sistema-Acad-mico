@@ -9,9 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Student;
-import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Teacher;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.UserDTO;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.enuns.UserRole;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.PunctuationRepository;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.SchoolCardRerpository;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.SchoolDisciplineRepository;
@@ -70,7 +69,10 @@ public class SistemaAcademicoApplication implements CommandLineRunner{
 		
 		//schoolDisciplineService.insert("veraLucia@gmail.com","Gestão de processos");
 		
-		punctuationService.assignStudentGrade("alissonfernandes@gmail.com",10,"Gestão de processos");
+		//punctuationService.assignStudentGrade("alissonfernandes@gmail.com",10,"Gestão de processos");
+		/*SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		UserDTO t = new UserDTO ("Alice Fernandes","aliceFernandes@gmail.com",formato.parse("24/09/1994"),"alice123",UserRole.STUDENT);
+		userService.insert(t);*/
 		
 	}
 

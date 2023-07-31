@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Punctuation;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.SchoolCard;
@@ -18,7 +19,6 @@ public class SchoolCardService {
 	public void insert (SchoolCard card) {
 		cardRerpository.save(card);
 	}
-	
 	
 	public List<SchoolCard> findAll (){
 		return cardRerpository.findAll();
