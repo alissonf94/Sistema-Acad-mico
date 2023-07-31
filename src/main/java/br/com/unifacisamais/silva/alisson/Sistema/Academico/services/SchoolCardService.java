@@ -4,9 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Punctuation;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.SchoolCard;
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.SchoolCardRerpository;

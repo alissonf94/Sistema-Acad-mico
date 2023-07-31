@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.SchoolDisciplineDTO;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.StudentRegistrationDTO;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Punctuation;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.SchoolCard;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.SchoolDiscipline;
@@ -22,9 +23,9 @@ public class SchoolDisciplineService {
 	PunctuationService punctuationService;
 	@Autowired
 	UserService service;	
-	public void insert (String EmailTeacher, String nameDiscipline) {
-		Teacher teacher =  (Teacher) service.findBYEmail(EmailTeacher);
-		schoolDisciplineRepository.save(new SchoolDiscipline(nameDiscipline, teacher));
+	public void insert (SchoolDisciplineDTO schoolDisciplineDTO) {
+		Teacher teacher =  (Teacher) service.findBYEmail(schoolDisciplineDTO.getEmailTeacher());
+		schoolDisciplineRepository.save(new SchoolDiscipline(schoolDisciplineDTO.getNameDiscipline(), teacher));
 	}
 	
 	public List<SchoolDisciplineDTO> findAll(){
@@ -44,13 +45,11 @@ public class SchoolDisciplineService {
 		return discipline;
 	}
 	
-	public void addStudent (String email,String nameDiscipline) {
-		Student student = (Student) service.findBYEmail(email);
+	public void enrollStudent (StudentRegistrationDTO studentRegistrationDTO) {
+		Student student = (Student) service.findBYEmail(studentRegistrationDTO.getEmailStudent());
 		SchoolCard card = cardService.findAll().stream().filter(p -> p.getStudent().getEmail().equals(student.getEmail())).findAny().orElse(null);
-		SchoolDiscipline discipline= findByName(nameDiscipline);
-		Punctuation punctuation = new Punctuation(discipline,card);
-	
-		
+		SchoolDiscipline discipline= findByName(studentRegistrationDTO.getNameDiscipline());
+		Punctuation punctuation = new Punctuation(discipline.getName(),card);
 		punctuationService.insert(punctuation);
 	}
 }

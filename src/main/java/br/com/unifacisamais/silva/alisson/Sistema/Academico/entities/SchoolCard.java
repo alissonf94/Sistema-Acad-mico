@@ -20,7 +20,7 @@ public class SchoolCard {
 	@OneToOne
 	private Student student;
 	
-	@OneToMany( fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "card", fetch = FetchType.EAGER)
 	private List<Punctuation> scores =  new ArrayList<>();
 	
 	public SchoolCard (){}
