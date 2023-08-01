@@ -43,8 +43,11 @@ public class Punctuation {
 	public String getNamediscipline() {
 		return Namediscipline;
 	}
-
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "VALOR:" + getValue() + "/nStudante: " + card.getStudent().getEmail();
+	}
 }
 	
 	

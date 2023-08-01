@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.GradeStudentDTO;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.PunctuationDTO;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.PunctuationMinDTO;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Punctuation;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.PunctuationRepository;
 
@@ -18,7 +19,7 @@ public class PunctuationService {
 	public void insert (Punctuation punctuation) {
 		punctuationRepository.save(punctuation);
 	}
-	public void assignStudentGrade (GradeStudentDTO gradeStudentDTO) {
+	public void assignStudentGrade (PunctuationMinDTO gradeStudentDTO) {
 		List <Punctuation> punctuations = punctuationRepository.findAll().stream().filter
 				(p -> p.getNamediscipline().equals(gradeStudentDTO.getNameSchoolDiscipline())).collect(Collectors.toList());
 		
@@ -29,4 +30,11 @@ public class PunctuationService {
 		
 		punctuationRepository.save(punctuation);
 	}
+	
+	public List <PunctuationDTO> findByCard (Long cardId){
+		List<Punctuation> punctuations  = punctuationRepository.searchByCard(cardId);
+		List<PunctuationDTO> result = punctuations.stream().map(p -> new PunctuationDTO(p)).toList();
+		return result;
+	}
+	
 }
