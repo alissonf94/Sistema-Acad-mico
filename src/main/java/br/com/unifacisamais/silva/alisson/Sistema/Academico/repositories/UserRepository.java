@@ -8,6 +8,4 @@ import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	UserDetails findByEmail (String email);
-	
-	
 }
