@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.PunctuationDTO;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.PunctuationMinDTO;
-import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Punctuation;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.services.PunctuationService;
 @RestController
 @RequestMapping(value = "/punctuations")

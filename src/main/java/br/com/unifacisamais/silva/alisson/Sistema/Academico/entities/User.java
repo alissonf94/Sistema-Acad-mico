@@ -24,7 +24,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User implements Serializable, UserDetails {
+public abstract class User implements  UserDetails{
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,86 +46,49 @@ public abstract class User implements Serializable, UserDetails {
 		this.password = password;
 		this.role = role;
 	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
+
 	public String getEmail() {
 		return email;
-	}
-	
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	public Date getBirthDate() {
-		return birthDate;
-	}
-	
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public Long getId() {
 		return id;
 	}
-	
-	
-	
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
 	public UserRole getRole() {
 		return role;
 	}
-	
-	
+
 	public void setRole(UserRole role) {
 		this.role = role;
 	}
 
-	@Override
-	public String getUsername() {
-		return email;
-	}
-	
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		if (this.role == UserRole.TEACHER) return List.of(new SimpleGrantedAuthority("ROLE_TEACHER"));
-		else return List.of(new SimpleGrantedAuthority("ROLE_STUDENT"));
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+	public String getPasswordUser() {
+		return password;
 	}
+	
 }

@@ -1,8 +1,13 @@
 package br.com.unifacisamais.silva.alisson.Sistema.Academico.entities;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.enuns.UserRole;
 import jakarta.persistence.Entity;
@@ -34,7 +39,43 @@ public class Teacher extends User{
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return List.of(new SimpleGrantedAuthority("ROLE_TEACHER"));
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return getPasswordUser();
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return getEmail();
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }
  

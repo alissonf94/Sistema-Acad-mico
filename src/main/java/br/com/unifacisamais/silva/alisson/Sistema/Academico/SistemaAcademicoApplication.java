@@ -13,7 +13,7 @@ import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.UserRep
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.services.PunctuationService;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.services.SchoolCardService;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.services.SchoolDisciplineService;
-import br.com.unifacisamais.silva.alisson.Sistema.Academico.services.TeacherService;
+
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.services.UserService;
 
 @SpringBootApplication
@@ -34,8 +34,7 @@ public class SistemaAcademicoApplication {
 	@Autowired
 	TeacherRepository repository;
 
-	@Autowired
-	TeacherService service;
+	
 	@Autowired
 	SchoolCardRerpository cardRerpository;
 	

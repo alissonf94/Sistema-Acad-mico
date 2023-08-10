@@ -40,7 +40,7 @@ public class UserService {
 			}
 			
 			else {
-				Administrador administrador = new Administrador (user.getName(),user.getEmail(),user.getBirthDate(),user.getPassword(),UserRole.ADMIN);
+				Administrador administrador = new Administrador (user.getName(),user.getEmail(),user.getBirthDate(),user.getPassword());
 				userRepository.save(administrador);
 			}
 		}
