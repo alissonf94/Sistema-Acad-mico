@@ -3,10 +3,13 @@ package br.com.unifacisamais.silva.alisson.Sistema.Academico.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.UserDTO;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.dto.UserMinDTO;
+import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Administrador;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Student;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.Teacher;
 import br.com.unifacisamais.silva.alisson.Sistema.Academico.entities.User;
@@ -15,20 +18,30 @@ import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.UserRep
 
 @Service
 public class UserService {
+	
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
 	SchoolCardService cardService;
 	
-	public void insert (UserDTO user) {
+	public void registrer (UserDTO user) {
 		try {
+			String encryptedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+			user.setPassword(encryptedPassword);
+			
 			if(user.getRole()== UserRole.STUDENT) {
 				Student student = new Student(user.getName(), user.getEmail(), user.getBirthDate(),user.getPassword());
 				userRepository.save(student);
 			}
-			else{
+			
+			else if (user.getRole()==UserRole.TEACHER){
 				Teacher teacher = new Teacher (user.getName(),user.getEmail(), user.getBirthDate(),user.getPassword());
 				userRepository.save(teacher);
+			}
+			
+			else {
+				Administrador administrador = new Administrador (user.getName(),user.getEmail(),user.getBirthDate(),user.getPassword(),UserRole.ADMIN);
+				userRepository.save(administrador);
 			}
 		}
 		catch (Exception exception) {

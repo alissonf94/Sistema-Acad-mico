@@ -11,6 +11,7 @@ import br.com.unifacisamais.silva.alisson.Sistema.Academico.repositories.UserRep
 public class AuthorizationService implements UserDetailsService{
 	@Autowired
 	UserRepository repository;
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub

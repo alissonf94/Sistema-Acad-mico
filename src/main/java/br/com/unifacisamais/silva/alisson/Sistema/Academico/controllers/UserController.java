@@ -27,9 +27,5 @@ public class UserController {
 		return result;
 	}
 	
-	@PostMapping
-	public ResponseEntity<UserDTO> insert( @RequestBody UserDTO body) {
-		userService.insert(body);
-		return ResponseEntity.ok().body(body);
-	}
+	
 }

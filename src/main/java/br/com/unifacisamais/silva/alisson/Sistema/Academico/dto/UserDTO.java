@@ -39,5 +39,11 @@ public class UserDTO {
 	public UserRole getRole() {
 		return role;
 	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	
 }
